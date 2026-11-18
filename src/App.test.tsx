@@ -6,6 +6,6 @@ describe("App", () => {
   it("renders the application", () => {
     render(<App />);
 
-    expect(screen.getByRole("heading")).toBeInTheDocument();
+    expect(screen.getByText("Frontend Ultimate")).toBeInTheDocument();
   });
 });
