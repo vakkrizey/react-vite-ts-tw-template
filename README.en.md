@@ -2,6 +2,8 @@
 
 A reusable frontend foundation with a responsive home page, language and theme controls, UI components, client-side routing, and tools for formatting, linting, testing, and component development.
 
+Author: @vakkrizey
+
 > Russian documentation: [README.md](./README.md).
 
 ## Technology stack
