@@ -1,0 +1,49 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './ui/button/Button.stories';
+import * as InputStories from './ui/input/Input.stories';
+import * as CardStories from './ui/card/Card.stories';
+import * as BadgeStories from './ui/badge/Badge.stories';
+import * as CheckboxStories from './ui/checkbox/Checkbox.stories';
+import * as SelectStories from './ui/select/Select.stories';
+
+<Meta title="Компоненты/Обзор" />
+
+# UI-компоненты
+
+Базовые переиспользуемые элементы интерфейса. Истории показывают основные варианты и состояния компонентов.
+
+## Кнопка
+
+Используйте `Button` для действий пользователя. Доступны варианты `primary`, `secondary` и `ghost`, а также стандартные атрибуты HTML-кнопки.
+
+<Canvas of={ButtonStories.Primary} />
+
+## Поле ввода
+
+`Input` связывает подпись с полем и поддерживает подсказку, сообщение об ошибке и стандартные атрибуты HTML-поля.
+
+<Canvas of={InputStories.Default} />
+
+## Карточка
+
+Используйте `Card` как контейнер для смысловых групп интерфейса.
+
+<Canvas of={CardStories.Default} />
+
+## Метка статуса
+
+`Badge` показывает компактный статус или категорию.
+
+<Canvas of={BadgeStories.Success} />
+
+## Флажок
+
+`Checkbox` подходит для независимых параметров и согласий.
+
+<Canvas of={CheckboxStories.Unchecked} />
+
+## Список выбора
+
+`Select` — доступное поле выбора с подписью и списком вариантов.
+
+<Canvas of={SelectStories.Default} />

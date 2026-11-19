@@ -30,15 +30,22 @@ jobs:
       - name: ESLint
         run: npm run lint
 
+      - name: Prettier
+        run: npm run format:check
+
       - name: Vitest
         run: npm run test:run
 
       - name: Production build
         run: npm run build
 
+      - name: Storybook build
+        run: npm run build-storybook
+
   e2e:
     name: Playwright tests
-    runs-on: ubuntu-latest
+    # Visual snapshots were generated on Windows/Chromium.
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -54,7 +61,7 @@ jobs:
         run: npm ci
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: npx playwright install
 
       - name: Run playwright
         run: npx playwright test
