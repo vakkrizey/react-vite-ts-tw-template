@@ -30,7 +30,11 @@ function NotFoundPage() {
         />
       </div>
       <section className="max-w-xl">
-        <p className="text-sm font-semibold tracking-[0.25em] text-violet-500 uppercase">404</p>
+        <p
+          className={`text-sm font-semibold tracking-[0.25em] uppercase ${isDark ? 'text-violet-300' : 'text-violet-700'}`}
+        >
+          404
+        </p>
         <h1 className="mt-4 text-5xl font-bold tracking-tight">
           {isRussian ? 'Страница не найдена' : 'Page not found'}
         </h1>

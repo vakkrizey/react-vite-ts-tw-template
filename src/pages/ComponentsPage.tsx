@@ -25,7 +25,10 @@ function ComponentsPage() {
       <div className="mx-auto max-w-5xl">
         <header className="mb-10 flex items-center justify-between gap-4">
           <div>
-            <Link className="text-sm text-violet-500 hover:underline" to="/">
+            <Link
+              className={`text-sm hover:underline ${isDark ? 'text-violet-300' : 'text-violet-700'}`}
+              to="/"
+            >
               {isRussian ? '← На главную' : '← Home'}
             </Link>
             <h1 className="mt-3 text-4xl font-bold">

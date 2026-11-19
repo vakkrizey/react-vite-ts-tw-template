@@ -1,126 +1,136 @@
-# React + TypeScript + Vite Starter
+# React + TypeScript + Vite — стартовый шаблон
 
-A reusable frontend foundation with a responsive home page, language and theme controls, UI components, client-side routing, and tools for formatting, linting, testing, and component development.
+Основа для современных frontend-проектов: адаптивная главная страница, переключение языка и темы, UI-компоненты, маршрутизация и инструменты для форматирования, проверки кода и тестирования.
 
-> Русская версия документации: [README.ru.md](./README.ru.md).
+> Англоязычная документация: [README.en.md](./README.en.md).
 
-## Technology stack
+## Технологический стек
 
-### Application
+### Приложение
 
-- **React 19** and **React DOM** — UI and browser rendering.
-- **TypeScript 6** — static typing for application code.
-- **Vite 8** — development server and production bundler.
-- **Tailwind CSS 4** — utility-first styling, integrated through the Vite plugin.
-- **TanStack Query 5** — fetching, caching, and synchronizing server state in React. The app is already wrapped in `QueryClientProvider`.
-- **Zustand 5** — lightweight client-side state. A small counter store demonstrates the setup on `/examples`.
-- **React Hook Form 7** and **Zod 4** — form state and schema-based validation, connected through `@hookform/resolvers`.
-- **Motion 14** — declarative React animations.
-- **TanStack Virtual 3** — virtualized rendering for long lists, so only visible rows are mounted.
-- **React Router 7** — client-side routes for the bilingual home page, component gallery, and 404 page.
-- **ThemeProvider** — light/dark theme switch with the choice persisted in local storage.
+- **React 19** и **React DOM** — интерфейс и его отображение в браузере.
+- **TypeScript 6** — статическая типизация кода приложения.
+- **Vite 8** — сервер разработки и сборщик production-версии.
+- **Tailwind CSS 4** — стилизация утилитарными классами через плагин Vite.
+- **TanStack Query 5** — загрузка, кэширование и синхронизация серверных данных в React. Приложение уже обёрнуто в `QueryClientProvider`.
+- **Zustand 5** — простое управление состоянием на клиенте. Пример небольшого хранилища со счётчиком есть на странице `/examples`.
+- **React Hook Form 7** и **Zod 4** — управление состоянием формы и проверка данных по схеме через `@hookform/resolvers`.
+- **Motion 14** — декларативная анимация React-компонентов.
+- **TanStack Virtual 3** — виртуализация длинных списков: в DOM создаются только видимые строки.
+- **React Router 7** — клиентская маршрутизация главной страницы, галереи компонентов, примеров библиотек и страницы 404.
+- **ThemeProvider** — переключение светлой и тёмной темы с сохранением выбора в локальном хранилище.
 
-### Code quality and tests
+### Качество кода и тестирование
 
-- **ESLint 10** with TypeScript and React Hooks rules.
-- **Prettier 3** with Tailwind CSS class sorting.
-- **Vitest 5** — unit and component tests in a JSDOM environment.
-- **Testing Library** — rendering components and asserting user-visible behavior.
-- **Playwright** — end-to-end browser tests for Chromium, Firefox, and WebKit.
+- **ESLint 10** с правилами для TypeScript и React Hooks.
+- **Prettier 3** с плагином сортировки классов Tailwind CSS.
+- **Vitest 5** — unit- и компонентные тесты в окружении JSDOM.
+- **Тесты Storybook** — запускают истории компонентов в Chromium и завершаются ошибкой при нарушениях доступности: `npm run test:storybook`.
+- **Testing Library** — рендеринг компонентов и проверки поведения, видимого пользователю.
+- **Playwright** — сквозные браузерные тесты для Chromium, Firefox и WebKit.
+- **axe-core с Playwright** — автоматические проверки WCAG 2.1 A/AA в светлой и тёмной темах для главной, галереи компонентов и примеров библиотек.
 
-### Component development and automation
+### Разработка компонентов и автоматизация
 
-- **Storybook 10** with React and Vite, accessibility, documentation, onboarding, and Vitest addons. The included UI components have stories and an MDX guide.
-- **GitHub Actions** — CI runs ESLint, Prettier, Vitest, app and Storybook builds, and Playwright on pushes and pull requests targeting `main`.
+- **Storybook 10** с React и Vite и дополнениями для доступности, документации и Vitest. Для UI-компонентов уже созданы истории и MDX-документация.
+- **GitHub Actions** — CI запускает ESLint, Prettier, Vitest, сборку приложения и Storybook, а также Playwright при отправке изменений и создании pull request в ветку `main`.
 
-## Requirements
+## Требования
 
-- Node.js 22 or newer
-- npm (the lockfile is `package-lock.json`)
+- Node.js версии 22 или новее
+- npm (файл блокировки зависимостей — `package-lock.json`)
 
-## Getting started
+Файл `.nvmrc` указывает рекомендуемую версию Node.js 22. Совместимые менеджеры версий могут использовать его, чтобы выбрать Node.js для проекта.
+
+## Быстрый старт
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite. The home page starts in Russian; use `EN` to switch it to English. The theme button toggles light and dark mode.
+Откройте локальный адрес, который Vite выведет в терминале. Главная открывается на русском; кнопка `EN` переключает язык на английский. Кнопка темы включает светлый или тёмный режим.
 
-## Available commands
+## Доступные команды
 
-| Command                   | Description                                                     |
-| ------------------------- | --------------------------------------------------------------- |
-| `npm run dev`             | Start the Vite development server                               |
-| `npm run build`           | Type-check the project and create a production build in `dist/` |
-| `npm run preview`         | Serve the production build locally                              |
-| `npm run lint`            | Run ESLint across the project                                   |
-| `npm run format`          | Format supported files with Prettier                            |
-| `npm run format:check`    | Check formatting without changing files                         |
-| `npm run test`            | Run Vitest in watch mode                                        |
-| `npm run test:run`        | Run Vitest once, suitable for CI                                |
-| `npm run e2e`             | Run Playwright end-to-end tests                                 |
-| `npm run final`           | Format, lint, test, and build Storybook and the app in order    |
-| `npm run e2e:visual`      | Compare page and component screenshots with visual baselines    |
-| `npm run e2e:ui`          | Open Playwright's interactive test UI                           |
-| `npm run storybook`       | Start Storybook on port 6006                                    |
-| `npm run build-storybook` | Build the static Storybook site                                 |
+| Команда                   | Назначение                                                       |
+| ------------------------- | ---------------------------------------------------------------- |
+| `npm run dev`             | Запустить сервер разработки Vite                                 |
+| `npm run build`           | Проверить типы и собрать production-версию в `dist/`             |
+| `npm run preview`         | Локально запустить production-сборку для просмотра               |
+| `npm run lint`            | Проверить проект с помощью ESLint                                |
+| `npm run format`          | Форматировать файлы с помощью Prettier                           |
+| `npm run format:check`    | Проверить форматирование без изменения файлов                    |
+| `npm run test`            | Запустить Vitest в режиме наблюдения за файлами                  |
+| `npm run test:run`        | Выполнить Vitest один раз, например в CI                         |
+| `npm run test:storybook`  | Проверить истории компонентов и их доступность                   |
+| `npm run e2e`             | Запустить сквозные тесты Playwright                              |
+| `npm run all-tests`       | Запустить линтер, проверку форматирования и все тесты без сборки |
+| `npm run e2e:visual`      | Сравнить снимки страницы и компонентов с эталонами               |
+| `npm run e2e:ui`          | Открыть интерактивный интерфейс Playwright                       |
+| `npm run storybook`       | Запустить Storybook на порту 6006                                |
+| `npm run build-storybook` | Собрать статическую версию Storybook                             |
 
-Playwright starts the Vite development server automatically for end-to-end tests. Install its browser binaries when prompted, or run `npx playwright install`.
+Для сквозных тестов Playwright автоматически запускает сервер Vite. Если Playwright попросит установить браузеры, выполните `npx playwright install`.
 
-Before committing, run `npm run final` to execute the full sequence: format, lint, format check, unit tests, browser tests, Storybook build, and production app build. The command stops at the first failure.
+Запустите `npm run all-tests`, чтобы проверить ESLint и форматирование, а затем выполнить unit-, Storybook- и браузерные тесты. Команда не меняет файлы и не запускает сборку приложения или Storybook. Для проверки production-сборок отдельно используйте `npm run build` и `npm run build-storybook`.
 
-Visual baselines are stored under `tests/e2e/visual.spec.ts-snapshots/` and recorded in Chromium. Review screenshot diffs like code changes. After an intentional design update, refresh the baselines with `npm run e2e:visual -- --update-snapshots` and review the changed images before committing.
+Эталоны визуальных снимков хранятся в `tests/e2e/visual.spec.ts-snapshots/` и создаются в Chromium. Проверяйте отличия изображений так же внимательно, как изменения кода. После намеренного редизайна обновите эталоны командой `npm run e2e:visual -- --update-snapshots` и просмотрите новые снимки перед коммитом.
 
-## Project structure
+## Структура проекта
 
 ```text
 .
-├── .github/workflows/ci.yml  # GitHub Actions checks
-├── .storybook/               # Storybook configuration
+├── .github/workflows/ci.yml  # Проверки GitHub Actions
+├── .storybook/               # Настройки Storybook
+├── .editorconfig              # Общие настройки редактора и форматирования
+├── .gitattributes              # Единый формат переносов строк в Git
+├── .nvmrc                     # Версия Node.js для локальной разработки
 ├── public/
-│   ├── brand/                # Brand assets such as the favicon
-│   ├── fonts/                # Public font files
-│   ├── icons/                # Static icons served by URL
-│   └── images/               # Static images served by URL
+│   ├── brand/                # Файлы бренда, например favicon
+│   ├── fonts/                # Публичные файлы шрифтов
+│   ├── icons/                # Статические иконки с прямыми URL
+│   └── images/               # Статические изображения с прямыми URL
 ├── src/
-│   ├── app/                   # App routes, providers, and global styles
-│   │   ├── App.tsx            # Route definitions
-│   │   ├── main.tsx           # React entry point and provider setup
-│   │   ├── ThemeProvider.tsx  # Persisted light/dark theme
-│   │   ├── query-client.ts    # TanStack Query defaults
-│   │   └── styles.css         # Tailwind import and global styles
-│   ├── assets/                # Images, fonts, and files imported by source code
+│   ├── app/                   # Маршруты, провайдеры и глобальные стили
+│   │   ├── App.tsx            # Описание маршрутов
+│   │   ├── main.tsx           # Точка входа React и подключение провайдеров
+│   │   ├── ErrorBoundary.tsx  # Экран восстановления при ошибке рендеринга
+│   │   ├── ThemeProvider.tsx  # Светлая/тёмная тема с сохранением выбора
+│   │   ├── query-client.ts    # Настройки TanStack Query
+│   │   └── styles.css         # Tailwind и глобальные стили
+│   ├── assets/                # Изображения, шрифты и файлы для импорта в код
 │   ├── components/
 │   │   ├── ui/                # Button, Input, Card, Badge, Checkbox, Select
-│   │   ├── index.ts           # Public component exports
-│   │   └── Components.mdx    # Storybook component guide
-│   ├── features/              # Feature-specific UI, logic, and API code
-│   ├── hooks/                 # Shared React hooks
-│   ├── lib/                   # Shared utilities and API clients
-│   ├── pages/                 # Home, component gallery, library examples, and 404 pages
-│   ├── store/                 # Client-side state stores and their tests
-│   ├── test/setup.ts          # Testing Library setup
-│   └── types/                 # Shared TypeScript types
-├── tests/e2e/                 # Playwright and visual regression tests
-├── index.html                 # HTML entry point and page metadata
-├── package.json               # Dependencies and npm scripts
-├── tsconfig*.json              # TypeScript configuration
-└── vite.config.ts              # Vite and Vitest configuration
+│   │   ├── index.ts           # Публичный экспорт компонентов
+│   │   └── Components.mdx    # Документация компонентов в Storybook
+│   ├── features/              # Код отдельных функций и частей продукта
+│   ├── hooks/                 # Общие React-хуки
+│   ├── lib/                   # Общие утилиты и API-клиенты
+│   ├── pages/                 # Главная, галерея компонентов, примеры библиотек и 404
+│   ├── store/                 # Клиентское состояние и тесты хранилищ
+│   ├── test/setup.ts          # Общая настройка тестов
+│   └── types/                 # Общие типы TypeScript
+├── tests/e2e/                 # Playwright, проверки доступности и визуальные снимки
+├── index.html                 # HTML-точка входа и метаданные страницы
+├── package.json               # Зависимости и npm-команды
+├── vitest.storybook.config.ts # Браузерные тесты историй и доступности Storybook
+├── tsconfig*.json              # Настройки TypeScript
+└── vite.config.ts              # Настройки Vite и Vitest
 ```
 
-## Customizing the starter
+## Настройка под свой проект
 
-1. Replace the home page in `src/pages/HomePage.tsx` and add application routes in `src/app/App.tsx`.
-2. Update the page title, description, language, and favicon reference in `index.html`.
-3. Use `src/components/ui/button/` and `src/components/ui/input/` as examples for reusable components. Document component states in `*.stories.tsx` files and cover behavior with colocated tests.
-4. Use `public/` for files referenced directly by URL. Put assets imported from TypeScript or CSS in `src/assets/` so Vite can process and fingerprint them.
-5. Add unit tests next to components and browser scenarios under `tests/e2e/`.
-6. Update this README and `README.ru.md` with project-specific setup instructions.
+1. Замените главную страницу в `src/pages/HomePage.tsx` и добавьте маршруты в `src/app/App.tsx`.
+2. Обновите заголовок, описание, язык страницы и favicon в `index.html`.
+3. Используйте `src/components/ui/button/` и `src/components/ui/input/` как образцы переиспользуемых компонентов. Описывайте состояния в `*.stories.tsx`, а поведение проверяйте тестами рядом с компонентом.
+4. Используйте `public/` для файлов, к которым обращаются напрямую по URL. Файлы, импортируемые из TypeScript или CSS, размещайте в `src/assets/`, чтобы Vite обработал их и добавил хеши.
+5. Размещайте unit-тесты рядом с компонентами, а сценарии браузерных проверок — в `tests/e2e/`.
+6. Обновите этот README и `README.en.md`, добавив инструкции для конкретного проекта.
 
-### Fetching server data
+### Загрузка данных с сервера
 
-Use `useQuery` for reads and `useMutation` for writes. Keep query functions near the feature or API module that owns the data:
+Для чтения данных используйте `useQuery`, для изменений — `useMutation`. Функции запросов размещайте рядом с функцией или модулем API, который отвечает за эти данные:
 
 ```tsx
 import { useQuery } from '@tanstack/react-query';
@@ -130,12 +140,12 @@ function Projects() {
     queryKey: ['projects'],
     queryFn: async () => {
       const response = await fetch('/api/projects');
-      if (!response.ok) throw new Error('Could not load projects');
+      if (!response.ok) throw new Error('Не удалось загрузить проекты');
       return response.json() as Promise<{ id: string; name: string }[]>;
     },
   });
 
-  if (projectsQuery.isPending) return <p>Loading projects…</p>;
+  if (projectsQuery.isPending) return <p>Загружаем проекты…</p>;
   if (projectsQuery.isError) return <p>{projectsQuery.error.message}</p>;
   return (
     <ul>
@@ -147,23 +157,23 @@ function Projects() {
 }
 ```
 
-Replace `/api/projects` with an endpoint provided by your backend. TanStack Query manages client-side server data; it does not provide the backend API.
+Замените `/api/projects` на адрес API своего backend. TanStack Query управляет серверными данными на стороне клиента, но не предоставляет сам backend API.
 
-The npm package is named `react-vite-ts-tw-template`, matching this repository. Update `package.json` and the top-level package entries in `package-lock.json` if you rename it.
+Имя npm-пакета — `react-vite-ts-tw-template`, как и у репозитория. При его смене обновите `package.json` и соответствующие записи корневого пакета в `package-lock.json`.
 
-## Creating a project from this template
+## Создание проекта на основе шаблона
 
-1. Create a new repository from this repository's template on GitHub, or clone it and push the code to a new empty repository.
-2. Rename the package in `package.json` and both root `name` fields in `package-lock.json`, then run `npm install` to refresh the lockfile.
-3. Update the GitHub URL and author handle in `src/app/App.tsx`.
-4. Change the page title, description, and favicon in `index.html`.
-5. Update the `main` branch filters in `.github/workflows/ci.yml` if your default branch has a different name. GitHub Actions must be enabled in repository settings for CI to run.
-6. Adapt the home page, routes, tests, and documentation to your application.
+1. Создайте новый репозиторий из этого шаблона на GitHub либо клонируйте его и отправьте код в новый пустой репозиторий.
+2. Измените имя пакета в `package.json` и оба корневых поля `name` в `package-lock.json`, затем выполните `npm install`, чтобы обновить lock-файл.
+3. Обновите адрес GitHub и ник автора в `src/app/App.tsx`.
+4. Обновите заголовок страницы, описание и favicon в `index.html`.
+5. Если основная ветка называется не `main`, измените фильтры веток в `.github/workflows/ci.yml`. Для запуска CI в настройках репозитория должен быть включён GitHub Actions.
+6. Адаптируйте главную страницу, маршруты, тесты и документацию под своё приложение.
 
-The language switcher updates the visible copy, the document's `lang` attribute, the page title and description, and stores the selected language in browser local storage.
+Переключатель языка меняет текст интерфейса, атрибут `lang` документа, заголовок и описание страницы, а также сохраняет выбор в локальном хранилище браузера.
 
-The app includes `/`, `/components`, `/examples`, and a not-found route. The examples page demonstrates Zustand, React Hook Form with Zod, Motion, and TanStack Virtual. Theme selection is available in the header and persists between visits. Import reusable UI elements from `src/components`, for example `import { Button, Card } from '../components'`.
+В приложении настроены маршруты `/`, `/components`, `/examples` и отдельная страница для неизвестных адресов. На `/examples` собраны рабочие примеры Zustand, React Hook Form с Zod, Motion и TanStack Virtual. Тему можно переключать в верхней панели; выбор сохраняется между посещениями. Импортируйте компоненты через общий файл `src/components`, например `import { Button, Card } from '../components'`.
 
 ## GitHub Actions
 
-The workflow at `.github/workflows/ci.yml` targets Node.js 22. Its code-check job runs on Ubuntu; Playwright runs on Windows to match the checked-in Chromium visual baselines. It installs dependencies with `npm ci` and runs lint, formatting, Vitest, app and Storybook builds, and browser tests. The package override pins Storybook's docgen plugin to a patched release to keep `npm audit` clear. Keep the workflow aligned with any changes to scripts or the supported Node version.
+Workflow находится в `.github/workflows/ci.yml` и использует Node.js 22. Проверки кода запускаются на Ubuntu, а Playwright — на Windows, чтобы окружение совпадало с сохранёнными Chromium-снимками. CI устанавливает зависимости командой `npm ci`, браузеры Playwright и запускает линтер, Prettier, unit-тесты, тесты историй Storybook с проверкой доступности, сборки приложения и Storybook, а также браузерные проверки. Override фиксирует исправленную версию плагина Storybook, чтобы `npm audit` не находил уязвимостей. При изменении npm-команд или поддерживаемой версии Node.js синхронизируйте workflow.

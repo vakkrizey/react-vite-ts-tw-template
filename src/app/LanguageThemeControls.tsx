@@ -28,7 +28,9 @@ function LanguageThemeControls({
         className={languageButtonClass}
         type="button"
         onClick={onLanguageToggle}
-        aria-label={isRussian ? 'Switch language to English' : 'Переключить язык на русский'}
+        aria-label={
+          isRussian ? 'EN — Switch language to English' : 'RU — Переключить язык на русский'
+        }
       >
         {isRussian ? 'EN' : 'RU'}
       </button>

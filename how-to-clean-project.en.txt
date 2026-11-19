@@ -1,0 +1,81 @@
+CLEAN THE STARTER PROJECT
+=========================
+
+Command:
+  npm run clean:starter
+
+Preview without making changes:
+  npm run clean:starter -- --dry-run
+
+The command first prints its plan. To apply it, type CLEAN when prompted.
+Any other answer cancels the operation. The cleanup is never confirmed
+automatically, and this instruction file is not removed.
+
+WHAT IT REMOVES AND WHY
+-----------------------
+
+1. src/pages/ComponentsPage.tsx
+   This is the template's component showcase page. A real application should
+   provide its own pages instead of keeping this demo catalog.
+
+2. src/pages/ExamplesPage.tsx
+   This page demonstrates Zustand, React Hook Form, Zod, Motion, and TanStack
+   Virtual. The libraries remain installed; only the demo interface is removed
+   so it does not get mixed with product code.
+
+3. src/store/example-counter-store.ts and
+   src/store/example-counter-store.test.ts
+   These files implement and test a sample Zustand counter. The src/store folder
+   remains available for application state.
+
+4. tests/e2e/visual.spec.ts-snapshots/starter-page-chromium-win32.png
+   This is a screenshot of the template's original showcase page and is no
+   longer needed. Visual baselines for the button and input stories are kept.
+
+WHAT IT REWRITES
+----------------
+
+- src/pages/HomePage.tsx becomes a blank application canvas. Language and theme
+  controls remain available.
+- src/app/App.tsx keeps the home and 404 routes, removing the component and
+  integration showcase routes. Lazy loading and Suspense remain in place.
+- index.html receives neutral application title and description metadata.
+- README.md and README.en.md are rewritten with the stack, setup, checks, and
+  project structure, without descriptions of the demo pages.
+- Unit, end-to-end, and axe tests are updated for the blank homepage, controls,
+  accessibility of the homepage and 404 page, and retained UI visual tests.
+- package.json and package-lock.json receive the neutral package name
+  my-react-app.
+
+WHAT IT KEEPS AND WHY
+---------------------
+
+- src/components/ui: Button, Input, Card, Badge, Checkbox, and Select as a
+  reusable UI foundation.
+- Component tests, Storybook stories, and MDX documentation to develop, verify,
+  and document the UI library.
+- src/app: routing, Error Boundary, light/dark theme, language switching,
+  TanStack Query, and global styles as useful application infrastructure.
+- src/pages/NotFoundPage.tsx as a ready-made page for unknown routes.
+- Vitest, Testing Library, Playwright, axe-core, ESLint, Prettier, and CI for
+  quality checks and automation.
+- Zustand, React Hook Form, Zod, Motion, and TanStack Virtual dependencies so
+  they can be used when needed.
+- public/brand/favicon.svg, LICENSE, .nvmrc, and Vite, TypeScript, Storybook,
+  and Playwright configuration.
+- how-to-clean-project.txt and this file as cleanup instructions.
+
+LIMITS
+------
+
+- The command only touches the specific files listed in its plan, inside the
+  current project directory.
+- It does not remove node_modules, public, LICENSE, Git history, your new files,
+  configuration, or the UI component source files.
+- After confirmation, the README files and listed source files are replaced by
+  the clean starter versions. Review the plan and save important edits before
+  typing CLEAN.
+- Cleanup does not run automatically during dependency installation or builds.
+
+After cleanup, review the Git changes and run:
+  npm run all-tests

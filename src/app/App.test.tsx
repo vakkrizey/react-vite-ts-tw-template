@@ -15,12 +15,12 @@ function renderApp() {
 }
 
 describe('App', () => {
-  it('renders in Russian by default', () => {
+  it('renders in Russian by default', async () => {
     window.localStorage.clear();
     renderApp();
 
     expect(
-      screen.getByRole('heading', { name: /создай новый проект на готовой основе/i }),
+      await screen.findByRole('heading', { name: /создай новый проект на готовой основе/i }),
     ).toBeInTheDocument();
     expect(screen.getByText('@vakkrizey')).toBeInTheDocument();
   });
@@ -30,10 +30,12 @@ describe('App', () => {
     document.head.innerHTML = '<meta name="description" content="English description">';
     renderApp();
 
-    fireEvent.click(screen.getByRole('button', { name: 'Switch language to English' }));
+    fireEvent.click(screen.getByRole('button', { name: /Switch language to English/ }));
 
     expect(
-      screen.getByRole('heading', { name: /build your next project on a solid foundation/i }),
+      await screen.findByRole('heading', {
+        name: /build your next project on a solid foundation/i,
+      }),
     ).toBeInTheDocument();
     expect(document.documentElement.lang).toBe('en');
     expect(document.title).toContain('Starter');

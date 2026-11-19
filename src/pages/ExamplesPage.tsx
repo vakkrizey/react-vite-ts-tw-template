@@ -100,7 +100,10 @@ function ExamplesPage() {
     >
       <div className="mx-auto max-w-5xl">
         <header className="mb-10 flex flex-wrap items-center justify-between gap-4">
-          <Link className="text-sm text-violet-500 hover:underline" to="/">
+          <Link
+            className={`text-sm hover:underline ${isDark ? 'text-violet-300' : 'text-violet-700'}`}
+            to="/"
+          >
             {text.back}
           </Link>
           <LanguageThemeControls
@@ -187,6 +190,13 @@ function ExamplesPage() {
             <div
               ref={listRef}
               className="h-64 overflow-auto rounded-lg border border-slate-200 dark:border-slate-700"
+              role="region"
+              aria-label={
+                isRussian
+                  ? 'Виртуальный список из 10 000 элементов'
+                  : 'Virtualized list of 10,000 items'
+              }
+              tabIndex={0}
             >
               <div className="relative w-full" style={{ height: virtualizer.getTotalSize() }}>
                 {virtualizer.getVirtualItems().map((item) => (

@@ -36,6 +36,9 @@ jobs:
       - name: Vitest
         run: npm run test:run
 
+      - name: Storybook tests and accessibility
+        run: npm run test:storybook
+
       - name: Production build
         run: npm run build
 
