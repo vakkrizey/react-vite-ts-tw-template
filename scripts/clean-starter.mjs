@@ -275,7 +275,7 @@ A clean foundation for a frontend application. The starter showcase and library 
 
 ## Stack
 
-- React 19, TypeScript 6, Vite 8, Tailwind CSS 4
+- React 19, TypeScript 7, Vite 8, Tailwind CSS 4
 - React Router 7, TanStack Query 5, Zustand 5
 - React Hook Form, Zod, Motion, and TanStack Virtual
 - Vitest, Testing Library, Playwright, axe-core, and Storybook
@@ -285,7 +285,9 @@ A clean foundation for a frontend application. The starter showcase and library 
     npm install
     npm run dev
 
-Use Node.js 22 or newer. The .nvmrc file records the recommended version.
+Use Node.js 26 or newer. The .nvmrc file records the recommended version.
+
+The TypeScript 6 API alias keeps ESLint and Storybook compatible, while the tsc command uses the TypeScript 7 compiler from @typescript/native.
 
 ## Useful commands
 
@@ -300,7 +302,6 @@ Use Node.js 22 or newer. The .nvmrc file records the recommended version.
 | npm run e2e | Run Playwright browser tests |
 | npm run storybook | Start Storybook |
 | npm run all-tests | Run lint, formatting checks, and all tests without building |
-| npm run build | Build the application when needed |
 | npm run build-storybook | Build Storybook when needed |
 
 ## Project structure
@@ -325,7 +326,7 @@ For the Russian guide, see README.md.
 
 ## Технологический стек
 
-- React 19, TypeScript 6, Vite 8, Tailwind CSS 4
+- React 19, TypeScript 7, Vite 8, Tailwind CSS 4
 - React Router 7, TanStack Query 5, Zustand 5
 - React Hook Form, Zod, Motion и TanStack Virtual
 - Vitest, Testing Library, Playwright, axe-core и Storybook
@@ -335,7 +336,9 @@ For the Russian guide, see README.md.
     npm install
     npm run dev
 
-Нужен Node.js 22 или новее. Рекомендуемая версия записана в .nvmrc.
+Нужен Node.js 26 или новее. Рекомендуемая версия записана в .nvmrc.
+
+Alias API TypeScript 6 сохраняет совместимость ESLint и Storybook, а команда tsc использует компилятор TypeScript 7 из @typescript/native.
 
 ## Полезные команды
 
@@ -350,7 +353,6 @@ For the Russian guide, see README.md.
 | npm run e2e | Запустить браузерные тесты Playwright |
 | npm run storybook | Запустить Storybook |
 | npm run all-tests | Проверить линтер, форматирование и все тесты без сборки |
-| npm run build | Собрать приложение при необходимости |
 | npm run build-storybook | Собрать Storybook при необходимости |
 
 ## Структура проекта

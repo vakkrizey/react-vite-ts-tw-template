@@ -9,7 +9,7 @@ A reusable frontend foundation with a responsive home page, language and theme c
 ### Application
 
 - **React 19** and **React DOM** — UI and browser rendering.
-- **TypeScript 6** — static typing for application code.
+- **TypeScript 7** — static typing and the compiler used to build the project.
 - **Vite 8** — development server and production bundler.
 - **Tailwind CSS 4** — utility-first styling, integrated through the Vite plugin.
 - **TanStack Query 5** — fetching, caching, and synchronizing server state in React. The app is already wrapped in `QueryClientProvider`.
@@ -37,10 +37,12 @@ A reusable frontend foundation with a responsive home page, language and theme c
 
 ## Requirements
 
-- Node.js 22 or newer
+- Node.js 26 or newer
 - npm (the lockfile is `package-lock.json`)
 
-The `.nvmrc` file records Node.js 22 as the recommended local version. Version managers that support `.nvmrc` can use it to select Node.js for this project.
+The `.nvmrc` file records Node.js 26 as the recommended local version. Version managers that support `.nvmrc` can use it to select Node.js for this project.
+
+For compatibility with tools that require the TypeScript 6 API, the `typescript` package points to `@typescript/typescript6`. The `tsc` command comes from `@typescript/native` and uses the TypeScript 7 compiler.
 
 ## Getting started
 
@@ -176,4 +178,4 @@ The app includes `/`, `/components`, `/examples`, and a not-found route. The exa
 
 ## GitHub Actions
 
-The workflow at `.github/workflows/ci.yml` targets Node.js 22. Its code-check job runs on Ubuntu; Playwright runs on Windows to match the checked-in Chromium visual baselines. It installs dependencies with `npm ci` and runs lint, formatting, unit tests, Storybook story and accessibility tests, app and Storybook builds, and browser tests. The package override pins Storybook's docgen plugin to a patched release to keep `npm audit` clear. Keep the workflow aligned with any changes to scripts or the supported Node version.
+The workflow at `.github/workflows/ci.yml` targets Node.js 26. Its code-check job runs on Ubuntu; Playwright runs on Windows to match the checked-in Chromium visual baselines. It installs dependencies with `npm ci` and runs lint, formatting, unit tests, Storybook story and accessibility tests, app and Storybook builds, and browser tests. The package override pins Storybook's docgen plugin to a patched release to keep `npm audit` clear. Keep the workflow aligned with any changes to scripts or the supported Node version.
